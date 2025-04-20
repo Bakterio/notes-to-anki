@@ -3,7 +3,7 @@ from markdown import markdown
 import os
 
 notes_path = "/home/bakterio/Dokumenty/obsidian-vault/GJB/Čeština/"
-anki_deck_name = "Čeština - notes-to-anki"
+anki_deck_name = "Čeština - notes-to-anki" # this has to be an non-existing deck
 
 my_model = genanki.Model(
   1607392319,
@@ -20,11 +20,11 @@ my_model = genanki.Model(
     },
 ])
 
-my_deck = genanki.Deck(2059400110, anki_deck_name)
+my_deck = genanki.Deck(2059400110, anki_deck_name) # unique id of the deck
 
 def file_to_note(file_path: str):
     file = open(file_path, "r")
-    back_html = markdown(file.read())
+    back_html = markdown(file.read()) # converting markdown to html
     file_path_without_ext, _ = os.path.splitext(file_path) # _ means, don't save the extension
     file_name = file_path_without_ext.split('/')[-1] # the last one is the file name
     my_note = genanki.Note(
@@ -37,9 +37,9 @@ def get_all_mds(path='.'):
     for entry in os.listdir(path):
         full_path = os.path.join(path, entry)
         if os.path.isdir(full_path):
-            files += get_all_mds(full_path)
+            files += get_all_mds(full_path) # recursion
         _, extension = os.path.splitext(full_path)
-        if (extension == ".md"):
+        if (extension == ".md"): # only markdown files (no images etc.)
             files.append(full_path);
 
     return files
