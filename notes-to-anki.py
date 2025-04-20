@@ -2,9 +2,12 @@ import genanki
 from markdown import markdown
 import os
 
+notes_path = "/home/bakterio/Dokumenty/obsidian-vault/GJB/Čeština/"
+anki_deck_name = "Čeština - notes-to-anki"
+
 my_model = genanki.Model(
   1607392319,
-  'Simple Model',
+  "Basic - notes-to_anki",
   fields=[
     {'name': 'Question'},
     {'name': 'Answer'},
@@ -17,7 +20,7 @@ my_model = genanki.Model(
     },
 ])
 
-my_deck = genanki.Deck(2059400110, 'Czech - generated')
+my_deck = genanki.Deck(2059400110, anki_deck_name)
 
 def file_to_note(file_path: str):
     file = open(file_path, "r")
@@ -41,7 +44,7 @@ def get_all_mds(path='.'):
 
     return files
 
-notes = get_all_mds("/home/bakterio/Dokumenty/obsidian-vault/GJB/Čeština/")
+notes = get_all_mds(notes_path)
 
 for note in notes:
     print(note)
