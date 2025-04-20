@@ -1,0 +1,2 @@
+- Je určena mladým **autorům do 30 let.**
+- Pojmenovaná po básníkovi Jiřím Ortenovi, který *zemřel v mladém věku* během 2. světové války.
