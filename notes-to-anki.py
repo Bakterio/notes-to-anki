@@ -1,4 +1,3 @@
-# Importing BeautifulSoup class from the bs4 module 
 import genanki
 from markdown import markdown
 import os
