@@ -24,7 +24,12 @@ my_deck = genanki.Deck(2059400110, anki_deck_name) # unique id of the deck
 
 def file_to_note(file_path: str):
     file = open(file_path, "r")
-    back_html = markdown(file.read()) # converting markdown to html
+    file_text = file.read()
+    if "#filecard" not in file_text:
+        return
+    print(file_path)
+    file_text = file_text.replace("#filecard\n", "")
+    back_html = markdown(file_text) # converting markdown to html
     file_path_without_ext, _ = os.path.splitext(file_path) # _ means, don't save the extension
     file_name = file_path_without_ext.split('/')[-1] # the last one is the file name
     my_note = genanki.Note(
@@ -47,7 +52,6 @@ def get_all_mds(path='.'):
 notes = get_all_mds(notes_path)
 
 for note in notes:
-    print(note)
     file_to_note(note)
 
 genanki.Package(my_deck).write_to_file('output.apkg')
